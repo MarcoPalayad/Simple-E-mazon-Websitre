@@ -47,6 +47,8 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+let timeoutId;
+
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 	button.addEventListener("click", () => {
 		const { productId } = button.dataset;
@@ -78,6 +80,14 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
 		document.querySelector(".js-cart-quantity").innerHTML = cartQty;
 
-		const addMessage = document.querySelector(`.js-cart-added-${productId}`).classList.add("added-message-visible");
+		clearTimeout(timeoutId);
+
+		const addedMessage = document.querySelector(`.js-cart-added-${productId}`);
+
+		addedMessage.classList.add("added-message-visible");
+
+		setTimeout(() => {
+			addedMessage.classList.remove("added-message-visible");
+		}, 2000);
 	});
 });
