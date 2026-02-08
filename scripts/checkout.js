@@ -34,7 +34,7 @@ cart.forEach((cartItem) => {
 		      </div>
 		      <div class="product-quantity">
 		        <span>
-		          Quantity: <span class="quantity-label">${cart.quantity}</span>
+		          Quantity: <span class="quantity-label">${cartItem.quantity}</span>
 		        </span>
 		        <span class="update-quantity-link link-primary">
 		          Update
@@ -94,7 +94,11 @@ cart.forEach((cartItem) => {
 	`;
 });
 
-document.querySelector(".js-cart-summary").innerHTML = cartSummary;
+const cartSummaryElement = document.querySelector(".js-cart-summary");
+
+if (cartSummaryElement) {
+	cartSummaryElement.innerHTML = cartSummary;
+}
 
 document.querySelectorAll(".js-delete-link").forEach((link) => {
 	link.addEventListener("click", () => {
@@ -106,3 +110,23 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
 		deletedProduct.remove();
 	});
 });
+
+export function updateCheckoutQty() {
+	let checkoutQty = 0;
+
+	cart.forEach((cartItem) => {
+		checkoutQty += cartItem.quantity;
+	});
+
+	const checkoutElement = document.querySelector(".js-checkout-qty");
+
+  if (checkoutElement) {
+    if (checkoutQty <= 1) {
+      checkoutElement.innerHTML = `Checkout (${checkoutQty}) Item`;
+    } else {
+      checkoutElement.innerHTML = `Checkout (${checkoutQty}) Items`;
+    }
+  }
+}
+
+updateCheckoutQty();
