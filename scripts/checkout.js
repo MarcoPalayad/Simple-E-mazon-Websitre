@@ -108,6 +108,8 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
 		const deletedProduct = document.querySelector(`.js-cart-item-container-${productId}`);
 
 		deletedProduct.remove();
+
+		updateCheckoutQty();
 	});
 });
 
@@ -120,13 +122,13 @@ export function updateCheckoutQty() {
 
 	const checkoutElement = document.querySelector(".js-checkout-qty");
 
-  if (checkoutElement) {
-    if (checkoutQty <= 1) {
-      checkoutElement.innerHTML = `Checkout (${checkoutQty}) Item`;
-    } else {
-      checkoutElement.innerHTML = `Checkout (${checkoutQty}) Items`;
-    }
-  }
+	if (checkoutElement) {
+		if (checkoutQty <= 1) {
+			checkoutElement.innerHTML = `Checkout (${checkoutQty}) Item`;
+		} else {
+			checkoutElement.innerHTML = `Checkout (${checkoutQty}) Items`;
+		}
+	}
 }
 
 updateCheckoutQty();
