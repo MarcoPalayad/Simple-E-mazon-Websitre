@@ -135,7 +135,7 @@ document.querySelectorAll(".js-save-link").forEach((saveQty) => {
 
 		const itemQtyUpdate = Number(document.querySelector(`.js-qty-input-${saveQtyId}`).value);
 
-		if (itemQtyUpdate >= 0 || itemQtyUpdate > 1000) {
+		if (itemQtyUpdate >= 0 && itemQtyUpdate < 1000) {
 			updateItemQty(saveQtyId, itemQtyUpdate);
 
 			const labelUpdate = document.querySelector(`.js-qty-label-${saveQtyId}`);
