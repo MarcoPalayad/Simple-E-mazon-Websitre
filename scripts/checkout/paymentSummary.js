@@ -38,10 +38,10 @@ export function renderPaymentSummary() {
         	$${formatCurrency(shippingPriceSet)}
         </div>
       </div>
-
+payment-summary-money
       <div class="payment-summary-row subtotal-row">
         <div>Total before tax:</div>
-        <div class="payment-summary-money">.
+        <div class="payment-summary-money">
         	$${formatCurrency(totalBeforeTax)}
         </div>
       </div>
